@@ -53,8 +53,11 @@ Error Response:
 
 #### Выход
 URL: {service}/logout
+
 Method: POST
+
 Success response
+
 Code: 200 OK
 
 #### Загрузка фотографии
