@@ -25,10 +25,6 @@ const upload = multer({ storage: storage });
 const userController = require('../controllers/UsersController');
 const photosController = require('../controllers/PhotosController');
 
-router.get('/', async (req, res) => {
-    res.send(await userController.viewUsers())
-});
-
 router.post('/signup', multipartMiddleware, (req, res) => {
     userController.createUser(req, res);
 });
