@@ -5,23 +5,18 @@ module.exports.viewUsers = (req, res) => {
 };
 
 module.exports.createUser = (req, res) => {
-    const user = new User ({
-        password: req.password,
-        surname: req.surname,
-        first_name: req.first_name,
-        phone: req.phone,
-    })
-
+    const user = new User(req.body);
     user.save((error) => {
         if (error) {
             let obj_errors = {};
+            let phone_errors = {phone: 'Error phone.'};
             for (key in error.errors)
                 obj_errors[key] = error.errors[key].properties.message;
 
-            return res.status(422).send(obj_errors.length === 0 ? error_login : obj_errors);
+            return res.status(422).send(!obj_errors.length ? phone_errors : obj_errors);
         }
 
-        return res.status(200).json({id,});
+        return res.status(200).json({id: user._id})
     });
 };
 

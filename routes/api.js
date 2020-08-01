@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/signup', multipartMiddleware, (req, res) => {
-    userController.createUser(req.body, res);
+    userController.createUser(req, res);
 });
 
 router.post('/login', multipartMiddleware, (req, res) => {
@@ -56,7 +56,5 @@ router.post('/photo', upload.single('photo'),  (req, res) =>  {
 router.delete('/photo/:id',  (req, res) =>  {
     photosController.deletePhoto(req, res)
 });
-
-
 
 module.exports = router;
