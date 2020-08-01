@@ -1,9 +1,5 @@
 const User = require('../models/User');
 
-module.exports.viewUsers = (req, res) => {
-    return User.find({}).lean();
-};
-
 module.exports.createUser = (req, res) => {
     const user = new User(req.body);
     user.save((error) => {
